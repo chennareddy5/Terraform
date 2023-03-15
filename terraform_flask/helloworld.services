@@ -1,0 +1,11 @@
+[unit]
+description=gunicorn instance for a simple hello world app
+After=network.target
+[service]
+user=ec2-user
+group=ec2-user
+WorkingDirectory=/home/ec2-user/helloworld
+Execstart=/home/ec2-user/helloworld/venv/bin/gunicorn -b localhost:800 app:app
+Restart=always
+[install]
+WantedBy=multi-user.target
